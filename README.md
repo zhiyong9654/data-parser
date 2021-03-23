@@ -2,8 +2,17 @@
 This package helps to parse new line delimited logs to tabular formats. The user provides the regex, file path and column names, and a dataframe will be returned.  
 Depending on the supplied mode (local/spark), a pandas dataframe or a spark dataframe will be returned.
 
+## Features
+### Local mode
+1. Regex matching is done using multiprocessing.
+1. Glob searching for files.
+1. Lazy evaluation of files. This allows larger than memory datasets to be parsed, but note that upon parsing, the resultant pandas dataframe must be able to fit in memory.
+
 ## Installation
+### Purely for local usage (No pyspark)
 pip install data-parser
+### Both local and pyspark
+pip install data-parser[pyspark]
 
 ## Usage - Local (Pandas)
 ```python
